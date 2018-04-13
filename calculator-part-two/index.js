@@ -2,7 +2,7 @@ const Calculate = {
   sum(inputArray) {
     if(inputArray.length === 0){
       return 0
-    }    
+    }
     return inputArray.reduce((sum, value) => {
       return sum + value;
     })
@@ -13,7 +13,7 @@ const Calculate = {
       return 1;
     }
     for (let iteration = inputNumber - 1; iteration >= 1; iteration--) {
-      inputNumber = inputNumber * iteration; 
+      inputNumber = inputNumber * iteration;
     }
 
     return inputNumber;
@@ -45,6 +45,42 @@ const Calculate = {
     } else {
       return input;
     }
+  },
+
+  exponential(base, exponent) {
+    let accumulator = 1;
+
+    for (let powerIndex = 0; powerIndex < exponent; powerIndex++) {
+      accumulator *= base
+    }
+    return accumulator;
+  },
+
+  max(inputArray) {
+    const arrayLength = inputArray.length;
+
+    if(arrayLength === 0) {
+      throw new Error('the Array can\'t be empty');
+    } else {
+      return Math.max(...inputArray);
+    }
+  },
+
+  min(inputArray) {
+    const arrayLength = inputArray.length;
+
+    if(arrayLength === 0) {
+      throw new Error('the Array can\'t be empty');
+    } else {
+      return Math.min(...inputArray);
+    }
+  },
+
+  average(inputArray) {
+    const arraySum = this.sum(inputArray);
+    const arrayLength = inputArray.length;
+
+    return arraySum / arrayLength;
   }
 }
 
